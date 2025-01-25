@@ -5,6 +5,7 @@ import UserList from "../views/UsersList/UserList";
 import UserBottle from "../views/UsersList/UserBottle/UserBottle";
 import Home from "../views/Home/Home";
 import { Button, Icon } from "react-native-elements";
+import LabelBottle from "../views/LabelBottle/LabelBottle";
 
 const { Screen, Navigator } = createNativeStackNavigator();
 
@@ -30,6 +31,13 @@ export default function StackRoutes() {
         component={UserBottle}
         options={({ navigation }: any) => ({
           title: "Minhas Garrafas",
+        })}
+      />
+       <Screen
+        name="LabelBottle"
+        component={LabelBottle}
+        options={({ navigation }: any) => ({
+          title: "Etiqueta",
         })}
       />
       <Screen

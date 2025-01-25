@@ -1,22 +1,54 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import {NativeStackScreenProps} from "@react-navigation/native-stack"
+import React, { useContext } from "react";
+import { ListItem } from "react-native-elements";
+import UsersContext from "../../../Context/UsersContext";
+import { FlatList, View, Text } from "react-native";
 
-type StackParamList ={
-  UserBottle:{
-    nome: string;
-  }
+type Bottle ={
+  id: number;
+  codigo: string;
+  nome: string;
+  status: string | null;
+  mensagem: string;
+  dataCompra: string;
+  dataVencimento: string;
 }
 
-type UserBottleProps = NativeStackScreenProps<StackParamList, "UserBottle">
+export default function UserBottle({ route }: any) {
+  console.warn(Object.keys(route.params));
+  console.log("routes: ", route.params);
 
-export default function UserBottle({route}:UserBottleProps) {
-  console.warn(Object.keys(route.params))
+  const { nome, garrafas } = route.params;
+  const { state }: any = useContext(UsersContext);
+  console.log("garrafas do usuario:", state);
 
-  const {nome} = route.params
+  const garrafasDetalhes = state.data.garrafas.filter((btl) =>
+    garrafas.includes(btl.id)
+  );
+
+  function getBottles({ item }: { item: Bottle }) {
+    return (
+      <ListItem bottomDivider>
+        <ListItem.Content>
+          <ListItem.Title>{item.nome}</ListItem.Title>
+          <ListItem.Subtitle>Código: {item.codigo}</ListItem.Subtitle>
+          <ListItem.Subtitle>Compra: {item.dataCompra}</ListItem.Subtitle>
+          <ListItem.Subtitle>Vencimento: {item.dataVencimento}</ListItem.Subtitle>
+          <ListItem.Subtitle>Status: {item.status}</ListItem.Subtitle>
+          <ListItem.Subtitle>Mensagem: {item.mensagem}</ListItem.Subtitle>
+        </ListItem.Content>
+      </ListItem>
+    );
+  }
   return (
     <View>
-      <Text>Minhas Garrafa do {nome}</Text>
+      <Text style={{ fontSize: 18, fontWeight: "bold", margin: 10 }}>
+        Garrafas de {nome}
+      </Text>
+      <FlatList
+        data={garrafasDetalhes}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={getBottles}
+      />
     </View>
-  )
+  );
 }

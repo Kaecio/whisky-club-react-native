@@ -15,7 +15,7 @@ export default { "usuarios":[
         "id": 3,
         "nome": "Carlos Pereira",
         "dataNascimento": "1988-07-08",
-        "garrafas": [104, 105]
+        "garrafas": [104, 105, 106]
       }
     ],
     "garrafas": [
@@ -35,7 +35,7 @@ export default { "usuarios":[
         "codigo": "VO67890",
         "dataCompra": "2023-11-15",
         "dataVencimento": "2024-01-15",
-        "status": "vencida",
+        "status": "Vencida",
         "dataStatus": "2024-01-15",
         "mensagem": "Garrafa venceu."
       },
@@ -65,7 +65,7 @@ export default { "usuarios":[
         "codigo": "TE13579",
         "dataCompra": "2023-12-15",
         "dataVencimento": "2024-02-15",
-        "status": "vencida",
+        "status": "Vencida",
         "dataStatus": "2024-02-15",
         "mensagem": "Garrafa venceu."
       },

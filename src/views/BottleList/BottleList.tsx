@@ -1,9 +1,10 @@
 import { View, Text, FlatList } from "react-native";
-import React from "react";
-import data from "../../data/data";
+import React, { useContext } from "react";
+// import data from "../../data/data";
 import { ListItem } from "react-native-elements";
 import { getFormatDate } from "../../utils/index";
 import Search from "../../components/Search/Search";
+import UserContext from "../../Context/UsersContext";
 
 interface Bottle {
   id: number;
@@ -17,6 +18,9 @@ interface Bottle {
 
 export default function BottleList() {
   console.warn("BottleForm");
+
+
+  const {state}: any = useContext(UserContext)
 
   function getBottles({ item }: { item: Bottle }) {
     console.log("item: ", item);
@@ -58,7 +62,7 @@ export default function BottleList() {
       </View>
       <FlatList
         keyExtractor={(item) => item.id.toString()}
-        data={data.garrafas}
+        data={state.data.garrafas}
         renderItem={getBottles}
       />
     </View>

@@ -1,6 +1,9 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
+    container:{
+        flex:1,
+    },
     form: {
         padding: 10
     },
@@ -28,5 +31,13 @@ export const styles = StyleSheet.create({
         justifyContent: "center",
         alignContent: "center",
         alignItems: "center"
+    },
+    modal:{
+        width: "80%",
+        height: "20%",
+        backgroundColor: "#fff",
+        marginBottom: 100,
+        flexDirection: "row"
+
     }
 })
