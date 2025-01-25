@@ -7,9 +7,6 @@ export default function BottleForm({route, navigation}: any) {
   console.log("naviation: ", navigation)
   console.warn("BottleForm");
 
-  function handleCloneModal(){
-    return null
-  }
 
   function handleShowModal(){
     return(

@@ -11,28 +11,19 @@ interface User {
   id: number;
   nome: string;
   dataNascimento: string;
-  garrafas: Array<any>;
+  garrafas: Array<any>
 }
 
 export default function UserList(props: any) {
-  console.warn("props: ", props);
+  console.warn("props: ",props)
 
-  const { state, dispatch }: any = useContext(UsersContext);
-  console.log("estado: ", state);
+   const {state, dispatch}: any = useContext(UsersContext)
+   console.log("estado: ", state)
 
   function getUser({ item }: { item: User }) {
-    console.log("UserListe", item);
+    console.log("UserListe", item)
     return (
-      <ListItem
-        bottomDivider
-        key={item.id}
-        onPress={() => {
-          props.navigation.navigate("UserBottle", {
-            nome: item.nome,
-            garrafas: item.garrafas,
-          });
-        }}
-      >
+      <ListItem bottomDivider key={item.id} onPress={()=>{props.navigation.navigate("UserBottle", {nome: item.nome, garrafas: item.garrafas})}}>
         <ListItem.Content>
           <ListItem.Title>{item.nome}</ListItem.Title>
           <ListItem.Subtitle>
@@ -50,10 +41,10 @@ export default function UserList(props: any) {
           name="pencil"
           // btn de editar usuario
           // onPress={() => console.log("editar user")}
-          onPress={() =>
+          onPress={()=>
             dispatch({
-              type: "edit",
-              payload: item,
+              type:"edit",
+              payload: item
             })
           }
         />
