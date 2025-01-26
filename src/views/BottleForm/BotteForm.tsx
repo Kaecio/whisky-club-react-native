@@ -1,29 +1,22 @@
 import { View, Text, TextInput, Pressable } from "react-native";
 import React, { useState } from "react";
 import { styles } from "./styles";
+import CWModal from "../../components/CWModal/CWModal";
 
 export default function BottleForm({route, navigation}: any) {
   const [showModal, setShowModal] = useState(false)
   console.log("naviation: ", navigation)
   console.warn("BottleForm");
 
-
-  function handleShowModal(){
-    return(
-      <>
-      <View style={styles.modal}>
-        <Pressable style={styles.button} onPress={()=>{
-          navigation.navigate("LabelBottle")
-        } }>
-          <Text style={styles.text}>Confirmar</Text>
-        </Pressable>
-        <Pressable style={styles.button} onPress={()=>{
-          setShowModal(false)}}>
-          <Text style={styles.text}>Cancelar</Text>
-        </Pressable>
-      </View>
-      </>
-    )
+  function handleShowModalProps() {
+    console.log("Entrou na função")
+    return {
+      onConfirm: () =>{ 
+        navigation.navigate("LabelBottle")
+        setShowModal(false)
+      },
+      onCancel: () => setShowModal(false),
+    };
   }
 
   return (
@@ -49,7 +42,7 @@ export default function BottleForm({route, navigation}: any) {
           <Text style={styles.text}>Salvar</Text>
         </Pressable>
       </View>
-          {showModal && handleShowModal()}
+          {showModal && <CWModal openModal={showModal}  {...handleShowModalProps()}/>}
     </View>
   );
 }

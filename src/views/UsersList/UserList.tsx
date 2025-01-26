@@ -18,6 +18,7 @@ export default function UserList(props: any) {
   console.warn("props: ",props)
 
    const {state, dispatch}: any = useContext(UsersContext)
+   
    console.log("estado: ", state)
 
   function getUser({ item }: { item: User }) {

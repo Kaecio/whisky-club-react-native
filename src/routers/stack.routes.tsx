@@ -1,5 +1,5 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import BottleList from "../views/BottleList/BottleList";
+// import BottleList from "../views/BottleList/BottleList";
 import BottleForm from "../views/BottleForm/BotteForm";
 import UserList from "../views/UsersList/UserList";
 import UserBottle from "../views/UsersList/UserBottle/UserBottle";
@@ -40,7 +40,7 @@ export default function StackRoutes() {
           title: "Etiqueta",
         })}
       />
-      <Screen
+      {/* <Screen
         name="BottleList"
         component={BottleList}
         options={({ navigation }: any) => ({
@@ -55,7 +55,7 @@ export default function StackRoutes() {
             />
           ),
         })}
-      />
+      /> */}
 
       <Screen
         name="BottleForm"
